@@ -1,0 +1,41 @@
+drupal.managed_content_field.admin:
+  dependencies:
+      - core/jquery
+      - core/drupal
+      - core/drupalSettings
+      - core/jquery.once
+      - core/jquery.form
+      - core/drupal.ajax
+      - core/drupal.dropbutton
+  css:
+    theme:
+      css/managed-content.admin.css: {}
+
+drupal.managed_content_field.widget:
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once
+    - core/jquery.form
+    - core/drupal.ajax
+    - core/drupal.dropbutton
+  css:
+    theme:
+      css/managed-content.widget.css: {}
+  js:
+    js/managed-content.admin.js: {}
+
+drupal.managed_content_field.actions:
+  css:
+    theme:
+      css/managed-content.actions.css: {}
+  js:
+    js/managed-content.actions.js: {}
+  dependencies:
+    - core/drupalSettings
+    - core/jquery.once
+    - core/jquery
+    - core/jquery.form
+    - core/drupal.ajax
+    - core/drupal

@@ -1,0 +1,13 @@
+{
+    "name": "managed_content_field",
+    "type": "drupal-module",
+    "description": "Provides a field for managing content lifecycle.",
+    "keywords": [
+    ],
+    "homepage": "https://www.drupal.org/project/managed_content_field",
+    "minimum-stability": "dev",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/managed_content_field",
+        "source": "http://cgit.drupalcode.org/managed_content_field"
+    }
+}

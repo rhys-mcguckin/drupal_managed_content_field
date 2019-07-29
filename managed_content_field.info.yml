@@ -1,0 +1,5 @@
+name: 'Managed Content'
+type: module
+description: 'Provides a field for managed content via entity references.'
+core: 8.x
+package: 'Content'

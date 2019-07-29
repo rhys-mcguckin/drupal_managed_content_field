@@ -1,0 +1,43 @@
+
+# Schema for the configuration of the Managed Content field type (duplicate of Entity Reference field definition).
+
+field.storage_settings.managed_content:
+  type: mapping
+  label: 'Managed Content field storage settings'
+  mapping:
+    target_type:
+      type: string
+      label: 'Type of item to reference'
+
+field.field_settings.managed_content:
+  type: mapping
+  label: 'Managed Content field settings'
+  mapping:
+    handler:
+      type: string
+      label: 'Reference method'
+    handler_settings:
+      type: entity_reference_selection.[%parent.handler]
+      label: 'Entity reference selection plugin settings'
+
+field.value.managed_content:
+  type: mapping
+  label: 'Default value'
+  mapping:
+    target_id:
+      type: string
+      label: 'Value'
+    target_uuid:
+      type: uuid
+
+
+# Definition of managed_content widget settings.
+field.widget.settings.managed_content:
+  type: mapping
+  mapping:
+    edit_mode:
+      type: string
+    autocollapse:
+      type: string
+    form_display_mode:
+      type: string

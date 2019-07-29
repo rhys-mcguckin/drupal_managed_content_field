@@ -1,0 +1,55 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a managed_content.
+ *
+ * Available variables:
+ * - managed_content: Full managed_content entity.
+ *   Only method names starting with "get", "has", or "is" and a few common
+ *   methods such as "id", "label", and "bundle" are available. For example:
+ *   - managed_content.getCreatedTime() will return the managed_content creation timestamp.
+ *   - managed_content.id(): The managed_content ID.
+ *   - managed_content.bundle(): The type of the managed_content, for example, "image" or "text".
+ *   - managed_content.getOwnerId(): The user ID of the managed_content author.
+ *   See Drupal\managed_contents\Entity\managed_content for a full list of public properties
+ *   and methods for the managed_content object.
+ * - content: All managed_content items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - managed_contents: The current template type (also known as a "theming hook").
+ *   - managed_contents--type-[type]: The current managed_contents type. For example, if the managed_content is an
+ *     "Image" it would result in "managed_contents--type--image". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - managed_contents--view-mode--[view_mode]: The View Mode of the managed_content; for example, a
+ *     preview would result in: "managed_contents--view-mode--preview", and
+ *     default: "managed_contents--view-mode--default".
+ * - view_mode: View mode; for example, "preview" or "full".
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @see template_preprocess_managed_content()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+    'managed_content',
+    'managed_content--type--' ~ managed_content.bundle|clean_class,
+    view_mode ? 'managed_content--view-mode--' ~ view_mode|clean_class,
+    not managed_content.isPublished() ? 'managed_content--unpublished'
+  ]
+%}
+{% block managed_content %}
+  <div{{ attributes.addClass(classes) }}>
+    {% block content %}
+      {{ content }}
+    {% endblock %}
+  </div>
+{% endblock managed_content %}

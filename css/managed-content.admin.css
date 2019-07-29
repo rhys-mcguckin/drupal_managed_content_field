@@ -1,0 +1,82 @@
+.js .field--widget-managed-content .dropbutton-wrapper {
+  display: inline-flex;
+  padding-right: 0em;
+  margin-right: 0em;
+  /* Override 600px breakpoint from core. */
+  width: auto;
+}
+
+.js .field--widget-managed-content .dropbutton-widget {
+  position: relative;
+}
+
+.js .field--widget-managed-content .field-multiple-table {
+  margin-bottom: 10px;
+}
+
+.js .field--widget-managed-content td {
+  padding: 10px 0px 10px 0px;
+}
+
+.js .field--widget-managed-content .field-multiple-drag {
+  vertical-align: top;
+}
+.js .field--widget-managed-content .draggable .tabledrag-handle {
+  padding-right: 0;
+  margin-left: 0;
+}
+.js .field--widget-managed-content .tabledrag-handle .handle {
+  margin-left: 0;
+  margin-right: 0;
+  padding-right: 0.2em;
+}
+
+.js .managed-content-type-top {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+.js .managed-content-collapsed-description {
+  height: 1.538em;
+  padding-left: 1em;
+  padding-right: 1em;
+  position: relative;
+  width: 100%;
+
+  color: #777;
+  overflow: hidden;
+  word-break: break-all;
+}
+.js .managed-content-collapsed-description:after {
+  content: '\00a0';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 1em;
+  width: 3em;
+
+  background: #fff;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #fff 100%);
+}
+.js .draggable:hover .managed-content-collapsed-description:after,
+.js .draggable:hover .managed-content-collapsed-description:after {
+  background: #f7fcff;
+  background: linear-gradient(to right, rgba(247, 252, 255, 0) 0%, #f7fcff 100%);
+}
+.js .drag-previous .managed-content-collapsed-description:after {
+  background: #ffd;
+  background: linear-gradient(to right, rgba(255, 255, 221, 0) 0%, #ffd 100%);
+}
+.js .managed-content-type-title {
+  flex-basis: 25%;
+  min-width: 80px;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.js .field--widget-managed-content .delta-order {
+  padding-right: 10px;
+  text-align: right;
+}

@@ -1,0 +1,300 @@
+//
+// @file
+// Managed content widget CSS.
+//
+
+@import "variables";
+@import "summary";
+
+.managed-content {
+  // Managed content state information icons.
+  &-icon {
+    display: inline-block;
+    height: $info-size;
+    width: $info-size;
+    background: no-repeat center;
+    background-size: $info-icon-size $info-icon-size;
+    vertical-align: middle;
+
+    $icons: view edit-info edit-disabled delete delete-disabled lock changed collapse warning error;
+    @each $icon in $icons {
+      &-#{$icon} {
+        background-image: url('../icons/icon-#{$icon}.svg');
+      }
+    }
+  }
+}
+
+// Managed content button icon support for small screens.
+@media (max-width: map-get($grid-breakpoints, 'md')) {
+  .button.managed-content-icon-button {
+    padding: 0;
+    width: $action-size-big !important;
+    height: $action-size-big;
+    // We need important flag here to easily override many specific rules from
+    // seven buttons.css.
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: $action-icon-size $action-icon-size;
+    border-radius: $action-border-radius;
+    text-indent: -9999em;
+
+    $icons: collapse edit;
+    @each $icon in $icons {
+      &-#{$icon},
+      &-#{$icon}:active,
+      &-#{$icon}:hover,
+      &-#{$icon}:focus {
+        background-image: url('../icons/icon-#{$icon}.svg');
+      }
+
+      &-#{$icon}:disabled,
+      &-#{$icon}:disabled:active {
+        background-image: url('../icons/icon-#{$icon}-disabled.svg');
+      }
+    }
+  }
+}
+
+.managed-content-tabs-wrapper {
+  .managed-content-tabs {
+    display: none;
+  }
+}
+
+.managed-content-bullet {
+  text-align: center;
+  &:after {
+    content: "\25cf";
+    padding: 0 10px;
+    color: #777;
+    font-size: 0.75em;
+    line-height: 3.5em;
+  }
+}
+
+.managed-content-type-icon {
+  width: 50px;
+  img {
+    display: block;
+  }
+}
+
+@media (min-width: map-get($grid-breakpoints, 'md')) {
+  .managed-content-bullet {
+    &:after {
+      line-height: 2.5em;
+    }
+  }
+}
+
+// We are using .js prefix here mainly because we want to apply this style rules
+// only for JS version of a widget.
+.js {
+  .field--widget-managed-content {
+    th .managed-content-actions {
+      float: right;
+      // Table th padding is 12px but for some weird reason here we need to do
+      // -11px to return it back.
+      margin-right: -11px;
+    }
+
+    .managed-content-dropbutton-wrapper {
+      // We are using inline-flex here so 'Add type' dropdown button is inline
+      // and aligned 'to type' text.
+      display: inline-flex;
+    }
+
+    .dropbutton-wrapper {
+      // Override 600px breakpoint from core, needed again so 'to type' is in
+      // the same line with add dropdown button.
+      width: auto;
+
+      // Reset some CSS that are coming from core.
+      margin-right: 0;
+      padding-right: 0;
+    }
+
+    // Reset some CSS that are coming from core.
+    .dropbutton-widget {
+      position: static;
+    }
+
+    .field-multiple-table {
+      margin-bottom: 10px;
+    }
+
+    td { // stylelint-disable-line selector-no-type
+      padding: 10px 0;
+    }
+
+    .field-multiple-drag {
+      vertical-align: top;
+    }
+
+    .draggable .tabledrag-handle {
+      margin-left: 0;
+    }
+
+    .tabledrag-handle .handle {
+      height: 22px;
+    }
+
+    .delta-order {
+      padding-right: 10px;
+      text-align: right;
+    }
+  }
+
+  .managed-content-top {
+    display: grid;
+    grid-template-columns: 100px auto 1fr auto auto;
+    grid-template-rows: auto auto;
+    grid-gap: 0 $gutter-top;
+    align-items: baseline;
+
+    @media (min-width: map-get($grid-breakpoints, 'lg')) {
+      grid-template-columns: 150px auto 1fr auto auto;
+    }
+
+    .managed-content-type {
+      grid-column: 1 / 2;
+      // PostCSS autoprefixer does not support -ms-grid-column and some other
+      // attributes that we need. This support will not be improved so we need
+      // to do it manually for IE.
+      -ms-grid-column: 1;
+      grid-row: 1 / span 1;
+    }
+
+    .managed-content-info {
+      grid-column: 2 / 3;
+      -ms-grid-column: 2;
+      grid-row: 1 / span 1;
+    }
+
+    .managed-content-edit-link {
+      grid-column: 1 / 5;
+      -ms-grid-column: 1;
+      -ms-grid-column-span: 5;
+      grid-row: 2 / span 1;
+
+      @media (min-width: map-get($grid-breakpoints, 'sm')) {
+        grid-column: 3 / 4;
+        -ms-grid-column: 3;
+        -ms-grid-column-span: 1;
+        grid-row: 1 / span 2;
+      }
+    }
+
+    .managed-content-moderation {
+      grid-column: 1 / 5;
+      -ms-grid-column: 1;
+      -ms-grid-column-span: 5;
+      grid-row: 2 / span 1;
+
+      @media (min-width: map-get($grid-breakpoints, 'sm')) {
+        grid-column: 4 / 5;
+        -ms-grid-column: 4;
+        -ms-grid-column-span: 1;
+        grid-row: 1 / span 2;
+      }
+    }
+
+    .managed-content-actions {
+      grid-column: 4 / 5;
+      -ms-grid-column: 4;
+      -ms-grid-column-span: 2;
+      grid-row: 1 / span 1;
+      justify-self: end;
+      -ms-grid-column-align: end;
+
+      @media (min-width: map-get($grid-breakpoints, 'sm')) {
+        grid-column: 5 / 5;
+        -ms-grid-column: 5;
+        -ms-grid-column-span: 1;
+      }
+    }
+  }
+
+  .managed-content-subform {
+    margin-top: 5px;
+  }
+
+  .managed-content-description {
+    @at-root .draggable:hover .managed-content-description {
+      &::after {
+        background: linear-gradient(to right, rgba(247, 252, 255, 0) 0%, #f7fcff 100%);
+      }
+    }
+
+    @at-root .drag-previous .managed-content-description {
+      &::after {
+        background: linear-gradient(to right, rgba(255, 255, 221, 0) 0%, #ffd 100%);
+      }
+    }
+
+    @at-root tr:hover .managed-content-description {
+      &::after {
+        background: linear-gradient(to right, rgba(255, 255, 221, 0) 0%, #f7fcff 100%);
+      }
+    }
+  }
+
+  .managed-content-type {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    &-title {
+      display: flex;
+      flex-basis: 100px;
+      min-width: 100px;
+    }
+
+    &-icon {
+      padding-right: $gutter-top;
+      height: $info-icon-size;
+      width: $info-icon-size;
+      vertical-align: middle;
+    }
+
+    &-label {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+
+  @media (min-width: map-get($grid-breakpoints, 'sm')) {
+    .managed-content-type-add-modal {
+      width: 100%;
+      padding: 10px 0;
+      height: 30px;
+      margin-top: -1.8em;
+      margin-bottom: -0.2em;
+      display: inline;
+    }
+  }
+
+  .managed-content-type-add-modal-button {
+    display: inline-block;
+    margin: 0 auto;
+  }
+
+  .managed-content-type-add-modal-button:hover {
+    color: #ffffff;
+    background: #057ec7 none;
+  }
+}
+
+.managed-content--view-mode--preview {
+  padding-right: 1em;
+}
+
+.is-horizontal .managed-content-tabs .tabs__tab {
+  border-bottom: 0;
+}
+
+// Requires JavaScript to avoid flickering on pageload.
+.managed-content-behavior {
+  display: none;
+}

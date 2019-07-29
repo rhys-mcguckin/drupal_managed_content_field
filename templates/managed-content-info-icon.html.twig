@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a managed content info icon.
+ *
+ * Available variables:
+ * - icon: Name of the icon to use.
+ * - message: Information message.
+ *
+ * @see template_preprocess()
+ *
+ * @ingroup themeable
+ */
+#}
+<span class="managed-content-icon managed-content-icon-{{ icon }}" title="{{ message }}">
+  <span class="managed-content-icon__message visually-hidden">{{ message }}</span>
+</span>
